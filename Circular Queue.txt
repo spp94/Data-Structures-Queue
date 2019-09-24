@@ -1,0 +1,38 @@
+import java.util.Arrays;
+
+public class CircularQueue {
+	private int[] items;
+	public CircularQueue(int capacity){
+		items = new int[capacity];
+	}
+	private int front, rear, count;
+	
+	public void enqueue(int value){
+		if(count == items.length){
+			System.out.println("Queue Overflow Exception");
+		}
+		else{
+		items[rear] = value;
+		rear = (rear+1) % items.length;
+		count++;
+		}
+	}
+	
+	public int dequeue(){
+		if(count == 0){
+			System.out.println("Queue Underflow Exception");
+			return -1;
+		}
+		else{
+		int value = items[front];
+		items[front] = 0;
+		front = (front+1) % items.length;
+		count--;
+		return value;
+		}
+	}
+	
+	public void print(){
+		System.out.println(Arrays.toString(items));
+	}
+}
