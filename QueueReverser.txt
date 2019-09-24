@@ -1,0 +1,73 @@
+import java.util.Arrays;
+
+public class QueueReverser {
+private int[] items;
+private int count;
+
+public QueueReverser(int capacity){
+	items = new int[capacity];
+}
+
+public boolean isFull(){
+	return count == items.length;
+}
+
+public boolean isEmpty(){
+	return count == 0;
+}
+
+public void add(int value){
+	if(isFull()){
+		System.out.println("Overeflow Exception");
+	}
+	else{
+		int pos = shiftItemsToInsert(value);
+		items[pos] = value;
+		count++;
+	}
+}
+
+public int remove(){
+	if(isEmpty()){
+		System.out.println("Underflow Exception");
+		return -1;
+	}
+	else{
+		return items[--count];
+	}
+}
+
+public int shiftItemsToInsert(int value){
+	int i;
+	for(i = count-1; i >=0; i--){
+		if(items[i] > value){
+			items[i+1] = items[i];
+		}
+		else{
+			break;
+		}
+	}
+	return i+1;
+}
+
+@Override
+public String toString(){
+	return Arrays.toString(items);
+}
+
+public void reverse(int k){
+	if(k > count || k <= 0){
+		System.out.println("Illegal State Exception");
+	}
+	else{
+		int pos = k-1;
+		for(int i = 0; i < k/2; i++){
+			System.out.println(i+" "+pos);
+			int temp = items[i];
+			items[i] = items[pos];
+			items[pos] = temp;
+			pos--;
+		}
+	}
+}
+}
