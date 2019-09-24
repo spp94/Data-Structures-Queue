@@ -1,0 +1,37 @@
+public class ArrayQueue {
+	private int[] items;
+	public ArrayQueue(int capacity){
+		items = new int[capacity];
+	}
+	private int front, rear, count;
+	
+	public void enqueue(int value){
+		if(count == items.length)
+			System.out.println("Queue Overflow Exception");
+		else{
+		items[rear++] = value;
+		count++;
+		}
+	}
+	
+	public int dequeue(){
+		if(front == rear){
+			System.out.println("Queue Underflow Exception");
+			return -1;
+			}
+		else{
+		int value = items[front];
+		items[front++] = 0;
+		count--;
+		return value;
+		}
+	}
+	
+	
+	public void print(){
+		for(int i = front; i < rear; i++){
+			System.out.print(items[i]+" ");
+		}
+		System.out.println();
+	}
+}
