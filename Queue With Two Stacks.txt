@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*;  
 public class QueueWithTwoStacks {
  private Stack<Integer> stack1 = new Stack<>();
  private Stack<Integer> stack2 = new Stack<>();
