@@ -1,8 +1,4 @@
-50
-40
-30
-20
-10import java.util.*;
+import java.util.*;  
 public class StackWithTwoQueues {
 	private Queue<Integer> queue1 = new ArrayDeque<>();
 	private int size;
